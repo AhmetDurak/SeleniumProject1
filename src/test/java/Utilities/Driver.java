@@ -81,4 +81,7 @@ class myDriver{
 
 
     private static WebDriver driver;
+
+    public static void  get(){}
+
 }
