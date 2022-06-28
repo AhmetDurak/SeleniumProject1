@@ -1,6 +1,7 @@
 package com.cydeo.stepDefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -38,5 +39,10 @@ public class LoginStepDefs {
     @And("user enters admin password")
     public void userEntersAdminPassword() {
         System.out.println("user enters admin password");
+    }
+
+    @Given("user is on the library login page")
+    public void userIsOnTheLibraryLoginPage() {
+        System.out.println("I run before each Scenario, and execute the method under me");
     }
 }

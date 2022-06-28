@@ -6,7 +6,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.cydeo.Utilities.*;
 
-public class Hook {
+// In the class we will be able to pass pre- & post- conditions to
+// each scenario and each step
+
+public class Hooks {
     Actions actions;
     WebDriverWait wait;
     @Before
