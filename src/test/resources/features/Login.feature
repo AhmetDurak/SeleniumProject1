@@ -18,4 +18,4 @@ Feature: As a user, I should be able to login with correct credentials to differ
     And user enters admin password
     Then user should see the dashboard
 
-
+#this is how we add comments in feature file
