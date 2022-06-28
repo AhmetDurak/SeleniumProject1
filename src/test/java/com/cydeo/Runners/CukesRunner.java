@@ -9,9 +9,11 @@ import org.junit.runner.RunWith;
         plugin = {},
         features = "src/test/resources/features",
         glue = "com/cydeo/stepDefinitions",
-        dryRun = false
+        dryRun = false,
+        tags = "@Admin or @Student"
+
 )
 
-
+// Runner class is the class where we control/trigger our whole framework.
 public class CukesRunner {
 }
