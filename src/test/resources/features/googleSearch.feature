@@ -7,6 +7,6 @@ Feature: Google search functionality
   @google
   Scenario: Search page title verification
     When user is on Google search page
-    Then user types apple in the google search box and clicks enter
-    Then user should see title is Steve Jobs
+    Then user types 'apple' in the google search box and clicks enter
+    Then user should see title is 'apple'
 

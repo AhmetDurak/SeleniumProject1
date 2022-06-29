@@ -20,14 +20,16 @@ public class googleLoginSteps {
         //throw new io.cucumber.java.PendingException();
     }
 
-    @Then("user types apple in the google search box and clicks enter")
+    @Then("user types {string} in the google search box and clicks enter")
     public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter() {
         google.consentGoogle.click();
         google.searchBox.sendKeys("Steve Jobs" + Keys.ENTER);
     }
 
-    @Then("user should see title is Steve Jobs")
+    @Then("user should see title is {string}")
     public void userShouldSeeTitleIsSteveJobs() {
+
+        //Junit assertion accepts first message then second arg as expected, third arg as actual
         Assert.assertEquals(Driver.get().getTitle(), "Steve Jobs - Google Suche");
     }
 
