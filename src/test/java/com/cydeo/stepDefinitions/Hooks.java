@@ -23,9 +23,9 @@ public class Hooks {
         wait = new WebDriverWait(Driver.get(), 10);
     }
     // We can also create setup for each specific tag
-    @Before (value = "@Login", order = 1)
-    public void setUpAdmin(){
-        System.out.println("This is special for Admin");
+    @Before (value = "@wip2", order = 1)
+    public void setUpDataTable(){
+        System.out.println("------------>>> Setup");
     }
 
     @Before (value = "@google", order = 2)
@@ -35,6 +35,7 @@ public class Hooks {
         actions = new Actions(Driver.get());
         wait = new WebDriverWait(Driver.get(), 10);
     }
+
     @Before (value = "@wikipedia2", order = 2)
     public void setUpWikipedia(){
         System.out.println("This runs only for Wikipedia testing");
@@ -43,13 +44,12 @@ public class Hooks {
         wait = new WebDriverWait(Driver.get(), 10);
     }
 
-    @After
+    @After (value = "@google")
     public void tearDown(Scenario scenario){
 
         if (scenario.isFailed()){
             // The screenshot will be attached in to my report
             byte [] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
 
