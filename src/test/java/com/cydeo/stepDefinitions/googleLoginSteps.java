@@ -20,8 +20,16 @@ public class googleLoginSteps {
         //throw new io.cucumber.java.PendingException();
     }
 
+    // This method and the next one fundamentally same but only difference is the first one
+    // has  {string} -> in feature file it has to be in quotes
+    // second one has {word} -> in feature file it is written without quotes or single quotes
     @Then("user types {string} in the google search box and clicks enter")
     public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter(String arg) {
+        google.consentGoogle.click();
+        google.searchBox.sendKeys(arg + Keys.ENTER);
+    }
+    @Then("user types {word} in the google search box and clicks enter")
+    public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter2(String arg) {
         google.consentGoogle.click();
         google.searchBox.sendKeys(arg + Keys.ENTER);
     }
