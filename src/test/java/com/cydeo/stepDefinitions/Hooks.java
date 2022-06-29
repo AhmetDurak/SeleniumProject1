@@ -1,9 +1,6 @@
 package com.cydeo.stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
+import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
@@ -40,8 +37,11 @@ public class Hooks {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown(Scenario scenario){
+        // The screenshot will be attached in to my report
         byte [] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+
+        scenario.attach(screenshot, "image/png", scenario.getName());
 
         Driver.closeDriver();
     }
