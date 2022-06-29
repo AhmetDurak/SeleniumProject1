@@ -40,8 +40,15 @@ public class googleLoginSteps {
     @Then("user should see title is {string}")
     public void userShouldSeeTitleIsSteveJobs(String arg) {
 
-        //Junit assertion accepts first message then second arg as expected, third arg as actual
-        Assert.assertEquals(Driver.get().getTitle(), arg + " - Google Suche");
+        switch (arg) {
+            case "Google":
+                //Junit assertion accepts first message then second arg as expected, third arg as actual
+                Assert.assertEquals(Driver.get().getTitle(), arg + " - Google Suche");
+                break;
+            case "Wikipedia":
+                Assert.assertEquals(arg, "arg – Wikipedia");
+                break;
+        }
     }
 
 

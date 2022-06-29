@@ -5,7 +5,7 @@ Feature: Wikipedia search functionality
 
 
   @wikipedia
-Scenario: Search page title verification
-When user is on Wikipedia search page
-Then user types 'Steve Jobs' in the wikipedia search box and clicks enter
-Then user should see title is 'Steve Jobs'
+  Scenario: Search page title verification
+  When user is on Wikipedia search page
+  Then user types 'Steve Jobs' in the wikipedia search box and clicks enter
+  Then user should see title is 'Steve Jobs'
