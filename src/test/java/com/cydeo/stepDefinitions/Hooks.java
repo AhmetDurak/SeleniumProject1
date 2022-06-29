@@ -35,13 +35,24 @@ public class Hooks {
         actions = new Actions(Driver.get());
         wait = new WebDriverWait(Driver.get(), 10);
     }
+    @Before (value = "@wikipedia", order = 2)
+    public void setUpWikipedia(){
+        System.out.println("This runs only for Wikipedia testing");
+        Driver.get().get(ConfigurationReader.get("wikipedia"));
+        actions = new Actions(Driver.get());
+        wait = new WebDriverWait(Driver.get(), 10);
+    }
 
     @After
     public void tearDown(Scenario scenario){
-        // The screenshot will be attached in to my report
-        byte [] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
 
-        scenario.attach(screenshot, "image/png", scenario.getName());
+        if (scenario.isFailed()){
+            // The screenshot will be attached in to my report
+            byte [] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
+
 
         Driver.closeDriver();
     }
