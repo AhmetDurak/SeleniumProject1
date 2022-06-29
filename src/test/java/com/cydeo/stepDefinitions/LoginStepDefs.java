@@ -43,6 +43,6 @@ public class LoginStepDefs {
 
     @Given("user is on the library login page")
     public void userIsOnTheLibraryLoginPage() {
-        System.out.println("I run before each Scenario, and execute the method under me");
+        System.out.println("++++++++>>>I run before each Scenario, and execute the method under me");
     }
 }

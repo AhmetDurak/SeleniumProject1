@@ -17,7 +17,7 @@ Feature: As a user, I should be able to login with correct credentials to differ
     When user enters student username
     And user enters student password
     Then user should see the dashboard
-  @Admin
+  @Admin @Login
   Scenario: Login as admin
     When user enters admin username
     And user enters admin password
