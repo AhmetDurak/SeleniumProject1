@@ -35,7 +35,7 @@ public class Hooks {
         actions = new Actions(Driver.get());
         wait = new WebDriverWait(Driver.get(), 10);
     }
-    @Before (value = "@wikipedia", order = 2)
+    @Before (value = "@wikipedia2", order = 2)
     public void setUpWikipedia(){
         System.out.println("This runs only for Wikipedia testing");
         Driver.get().get(ConfigurationReader.get("wikipedia"));

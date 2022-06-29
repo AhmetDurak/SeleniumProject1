@@ -15,9 +15,20 @@ public class WikipediaStepDefs {
     }
     @Then("user types {string} in the wikipedia search box and clicks enter")
     public void user_types_in_the_wikipedia_search_box_and_clicks_enter(String string) throws InterruptedException {
-        wikipedia.searchBox.sendKeys(string);
-        wikipedia.searchBtn.click();
+        wikipedia.searchBox.sendKeys(string + Keys.ENTER);
+    }
 
+    @Then("user should see {string} in wiki title")
+    public void userShouldSeeSteveJobsInWikiTitle(String string) {
+        Assert.assertTrue(Driver.get().getTitle().contains(string));
+    }
 
+    @Then("user should see {string} in main header")
+    public void userShouldSeeSteveJobsInMainHeader(String string) {
+        Assert.assertTrue(wikipedia.mainHeader.getText().contains(string));
+    }
+
+    @Then("user should see {string} in image header")
+    public void userShouldSeeSteveJobsInImageHeader(String string) {
     }
 }

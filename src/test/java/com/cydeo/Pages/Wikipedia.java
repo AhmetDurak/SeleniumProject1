@@ -13,7 +13,7 @@ public class Wikipedia {
     @FindBy (name = "search")
     public WebElement searchBox;
 
-    @FindBy(id = "searchButton")
-    public WebElement searchBtn;
+    @FindBy(id = "firstHeading")
+    public WebElement mainHeader;
 
 }
