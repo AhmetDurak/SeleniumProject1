@@ -23,6 +23,9 @@ public class googleLoginSteps {
     // This method and the next one fundamentally same but only difference is the first one
     // has  {string} -> in feature file it has to be in quotes
     // second one has {word} -> in feature file it is written without quotes or single quotes
+    // for detailed information check out this link
+    //https://github.com/cucumber/cucumber-expressions#readme
+
     @Then("user types {string} in the google search box and clicks enter")
     public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter(String arg) {
         google.consentGoogle.click();
