@@ -15,4 +15,13 @@ public class googleLoginSteps {
         //throw new io.cucumber.java.PendingException();
     }
 
+    @Then("user types apple in the google search box and clicks enter")
+    public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter() {
+    }
+
+    @Then("user should see title is Steve Jobs")
+    public void userShouldSeeTitleIsSteveJobs() {
+    }
+
+
 }
