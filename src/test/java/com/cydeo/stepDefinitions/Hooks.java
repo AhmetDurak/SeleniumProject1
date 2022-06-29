@@ -1,6 +1,5 @@
 package com.cydeo.stepDefinitions;
 
-
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
@@ -17,7 +16,7 @@ public class Hooks {
     WebDriverWait wait;
 
     // It is important to be sure that @Before is imported from io.cucumber.java.Before
-    @Before (order = 0)// 0 runs before everything
+    @Before (value = "@Login",order = 0)// 0 runs before everything
     public void setUp(){
         System.out.println("This is first setup");
         Driver.get().get(ConfigurationReader.get("url"));
@@ -30,24 +29,27 @@ public class Hooks {
         System.out.println("This is special for Admin");
     }
 
-    @Before (value = "@db", order = 2)
-    public void setUpDatabase(){
-        System.out.println("This runs only in Database");
+    @Before (value = "@google", order = 2)
+    public void setUpGoogleTest(){
+        System.out.println("This runs only for Google testing");
+        Driver.get().get(ConfigurationReader.get("google"));
+        actions = new Actions(Driver.get());
+        wait = new WebDriverWait(Driver.get(), 10);
     }
 
     @After
     public void tearDown(){
-        Driver.closeDriver();
+        //Driver.closeDriver();
     }
 
     // it will be executed before each feature line
-    @BeforeStep
-    public void setUpStep(){
-        System.out.println("------->Runs before every step");
-    }
+    //@BeforeStep
+    //public void setUpStep(){
+    //    System.out.println("------->Runs before every step");
+    //}
 
-    @AfterStep
-    public void  afterStep(){
-        System.out.println("-------->Runs after every step");
-    }
+    //@AfterStep
+    //public void  afterStep(){
+    //    System.out.println("-------->Runs after every step");
+    //}
 }

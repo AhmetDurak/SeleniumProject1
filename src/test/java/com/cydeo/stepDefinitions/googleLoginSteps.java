@@ -1,13 +1,18 @@
 package com.cydeo.stepDefinitions;
 
+import com.cydeo.Pages.GoogleSearch;
+import com.cydeo.Utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class googleLoginSteps {
+    GoogleSearch google = new GoogleSearch();
+
     @When("user is on Google search page")
     public void user_is_on_google_search_page() {
-        System.out.println("User is on google search page");
-        //throw new io.cucumber.java.PendingException();
+        Assert.assertEquals(Driver.get().getTitle(), "Google");
     }
     @Then("user should see title is Google")
     public void user_should_see_title_is_google() {
@@ -17,10 +22,13 @@ public class googleLoginSteps {
 
     @Then("user types apple in the google search box and clicks enter")
     public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter() {
+        google.consentGoogle.click();
+        google.searchBox.sendKeys("Steve Jobs" + Keys.ENTER);
     }
 
     @Then("user should see title is Steve Jobs")
     public void userShouldSeeTitleIsSteveJobs() {
+        Assert.assertEquals(Driver.get().getTitle(), "Steve Jobs - Google Suche");
     }
 
 
