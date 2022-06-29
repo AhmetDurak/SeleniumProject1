@@ -21,16 +21,16 @@ public class googleLoginSteps {
     }
 
     @Then("user types {string} in the google search box and clicks enter")
-    public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter() {
+    public void userTypesAppleInTheGoogleSearchBoxAndClicksEnter(String arg) {
         google.consentGoogle.click();
-        google.searchBox.sendKeys("Steve Jobs" + Keys.ENTER);
+        google.searchBox.sendKeys(arg + Keys.ENTER);
     }
 
     @Then("user should see title is {string}")
-    public void userShouldSeeTitleIsSteveJobs() {
+    public void userShouldSeeTitleIsSteveJobs(String arg) {
 
         //Junit assertion accepts first message then second arg as expected, third arg as actual
-        Assert.assertEquals(Driver.get().getTitle(), "Steve Jobs - Google Suche");
+        Assert.assertEquals(Driver.get().getTitle(), arg + " - Google Suche");
     }
 
 
