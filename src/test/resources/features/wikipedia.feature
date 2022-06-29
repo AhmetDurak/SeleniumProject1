@@ -19,3 +19,10 @@ Feature: Wikipedia search functionality
     When user is on Wikipedia search page
     Then user types 'Steve Jobs' in the wikipedia search box and clicks enter
     Then user should see 'Steve Jobs' in image header
+
+  @wip
+  Scenario: Search page title verification
+    Given user is on Wikipedia search page
+    Then user types '<searchValue>' in the wikipedia search box and clicks enter
+    Then user should see '<expectedTitle>' in wiki title
+    Then user should see '<expectedMainHeader>' in main header
