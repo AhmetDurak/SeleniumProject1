@@ -1,10 +1,13 @@
 package com.cydeo.stepDefinitions;
 
 
+import com.cydeo.Utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 
+import java.util.List;
 import java.util.Map;
 
 public class DataTable {
@@ -18,10 +21,12 @@ public class DataTable {
 
     @Given("User is on the dropdowns page of practice tool")
     public void userIsOnTheDropdownsPageOfPracticeTool() {
+       // Assert.assertTrue(Driver.get().getTitle().contains("dropdown"));
     }
 
     @Then("User should see below info in month dropdown")
-    public void userShouldSeeBelowInfoInMonthDropdown() {
+    public void userShouldSeeBelowInfoInMonthDropdown(List<String> months) {
+        System.out.println(months);
     }
 
 }
