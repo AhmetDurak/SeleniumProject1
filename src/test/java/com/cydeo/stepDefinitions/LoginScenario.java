@@ -57,12 +57,4 @@ public class LoginScenario {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-    @Given("User is on the dropdowns page of practice tool")
-    public void userIsOnTheDropdownsPageOfPracticeTool() {
-    }
-
-    @Then("User should see below info in month dropdown")
-    public void userShouldSeeBelowInfoInMonthDropdown() {
-    }
 }
