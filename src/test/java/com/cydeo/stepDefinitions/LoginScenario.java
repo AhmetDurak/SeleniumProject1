@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +46,18 @@ public class LoginScenario {
     }
     @Then("user enters appropriate test data: {string},{string},{string},{string},{string},{string},{string},{string},{string},{string}")
     public void user_enters_appropriate_test_data(String product, String quantity, String customerName, String street, String city, String state, String zip, String cardType, String cardNo, String expiryDate) {
-
+        login = new com.cydeo.Pages.LoginScenario();
+        Select select = new Select(login.product);
+        select.selectByVisibleText(product);
+        login.quantity.sendKeys(quantity);
+        login.customerName.sendKeys(customerName);
+        login.street.sendKeys(street);
+        login.city.sendKeys(city);
+        login.state.sendKeys(state);
+        login.zip.sendKeys(zip);
+        login.selectCardType(cardType);
+        login.cardNo.sendKeys(cardNo);
+        login.expiryDate.sendKeys(expiryDate);
     }
     @Then("user clicks to Process Order")
     public void user_clicks_to_process_order() {

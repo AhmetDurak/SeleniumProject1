@@ -7,20 +7,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginScenario {
-    public LoginScenario(){
-        PageFactory.initElements(Driver.get(),this);
+    public LoginScenario() {
+        PageFactory.initElements(Driver.get(), this);
     }
 
-    @FindBy (css = "input[name='username']")
+    @FindBy(css = "input[name='username']")
     public WebElement username;
 
-    @FindBy (css = "input[name='password']")
+    @FindBy(css = "input[name='password']")
     public WebElement password;
 
-    @FindBy (tagName = "button")
+    @FindBy(tagName = "button")
     public WebElement login;
 
-    @FindBy (xpath = "//button[.='Order']")
+    @FindBy(xpath = "//button[.='Order']")
     public WebElement orderPage;
 
     @FindBy(name = "product")
@@ -30,7 +30,7 @@ public class LoginScenario {
     public WebElement quantity;
 
     @FindBy(name = "name")
-    public WebElement name;
+    public WebElement customerName;
 
     @FindBy(name = "street")
     public WebElement street;
@@ -53,10 +53,36 @@ public class LoginScenario {
     @FindBy(xpath = "(//input[@name='card'])[1]")
     public WebElement americanExpress;
 
+    @FindBy(css = "button[type='submit']")
+    public WebElement submit;
+
+    @FindBy(name = "cardNo")
+    public WebElement cardNo;
+
+    @FindBy(name = "cardExp")
+    public WebElement expiryDate;
 
 
-
-
+    /**
+     * One parameter
+     * When this method is called, it will select a card type according to the input
+     * @param cardType
+     */
+    public void selectCardType(String cardType){
+        switch (cardType){
+            case "visa":
+                this.visa.click();
+                break;
+            case "masterCard":
+                this.masterCard.click();
+                break;
+            case "americanExpress":
+                this.americanExpress.click();
+                break;
+            default:
+                System.out.println("Card type doesn't exist!");
+        }
+    }
 
 
     /**
@@ -66,7 +92,7 @@ public class LoginScenario {
      * Username: Test
      * Password: Tester
      */
-    public void login(){
+    public void login() {
         this.username.sendKeys("Test");
         this.password.sendKeys("Tester");
         this.login.click();
@@ -78,7 +104,7 @@ public class LoginScenario {
      * @param username
      * @param password
      */
-    public void login(String username, String password){
+    public void login(String username, String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         this.login.click();
@@ -88,7 +114,7 @@ public class LoginScenario {
      * This method will log in using credentials from
      * configuration.properties
      */
-    public void loginWithConfig(){
+    public void loginWithConfig() {
         this.username.sendKeys(ConfigurationReader.get("web.table.username"));
         this.password.sendKeys(ConfigurationReader.get("web.table.password"));
         this.login.click();
