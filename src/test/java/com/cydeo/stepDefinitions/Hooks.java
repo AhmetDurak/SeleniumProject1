@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.cydeo.Utilities.*;
 
+import java.util.concurrent.TimeUnit;
+
 // In the class we will be able to pass pre- & post- conditions to
 // each scenario and each step
 
@@ -36,15 +38,26 @@ public class Hooks {
         wait = new WebDriverWait(Driver.get(), 10);
     }
 
-    @Before (value = "@wip", order = 2)
+    @Before (value = "@wikipedia", order = 2)
     public void setUpWikipedia(){
         System.out.println("This runs only for Wikipedia testing");
         Driver.get().get(ConfigurationReader.get("wikipedia"));
-        actions = new Actions(Driver.get());
-        wait = new WebDriverWait(Driver.get(), 10);
+        Driver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @After (value = "@wip")
+    @Before (value = "@LoginScenario")
+    public void setUpLoginScenario(){
+        Driver.get().get(ConfigurationReader.get("LoginScenario"));
+        Driver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
+    @Before (value = "@DataTableTask")
+    public void setUpDataTableTask(){
+        Driver.get().get(ConfigurationReader.get("DataTableTask"));
+        Driver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    }
+
+    @After (value = "@wikipedia")
     public void tearDown(Scenario scenario){
 
         if (scenario.isFailed()){

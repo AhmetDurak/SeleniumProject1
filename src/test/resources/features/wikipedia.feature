@@ -20,7 +20,7 @@ Feature: Wikipedia search functionality
     Then user types 'Steve Jobs' in the wikipedia search box and clicks enter
     Then user should see 'Steve Jobs' in image header
 
-  @wip
+  @DataTable
   Scenario Outline: Search page title verification
     Given user is on Wikipedia search page
     Then user types '<searchValue>' in the wikipedia search box and clicks enter
