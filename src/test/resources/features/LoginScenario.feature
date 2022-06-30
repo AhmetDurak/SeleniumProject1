@@ -8,6 +8,7 @@ Feature: Login scenario using maps/ alternative practice
     Then User should see url contains orders
 
 
+  @wip @LoginScenario
   #Day17_WebTable_Task2-1
   Scenario Outline: User should make a new order
     Given user is already logged in to web table app

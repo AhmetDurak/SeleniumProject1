@@ -12,7 +12,7 @@ Feature: Examples of Cucumber data table implementations
       | pomegranate | 1 |
 
 
-  @wip @DataTableTask
+  @DataTableTask
     #Task 6.2
   Scenario: User should be able to see all 12 months in months
   dropdown

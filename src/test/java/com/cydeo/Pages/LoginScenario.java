@@ -23,6 +23,41 @@ public class LoginScenario {
     @FindBy (xpath = "//button[.='Order']")
     public WebElement orderPage;
 
+    @FindBy(name = "product")
+    public WebElement product;
+
+    @FindBy(name = "quantity")
+    public WebElement quantity;
+
+    @FindBy(name = "name")
+    public WebElement name;
+
+    @FindBy(name = "street")
+    public WebElement street;
+
+    @FindBy(name = "city")
+    public WebElement city;
+
+    @FindBy(name = "state")
+    public WebElement state;
+
+    @FindBy(name = "zip")
+    public WebElement zip;
+
+    @FindBy(xpath = "(//input[@name='card'])[1]")
+    public WebElement visa;
+
+    @FindBy(xpath = "(//input[@name='card'])[1]")
+    public WebElement masterCard;
+
+    @FindBy(xpath = "(//input[@name='card'])[1]")
+    public WebElement americanExpress;
+
+
+
+
+
+
 
     /**
      * No parameters.
