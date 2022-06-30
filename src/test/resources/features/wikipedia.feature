@@ -21,8 +21,16 @@ Feature: Wikipedia search functionality
     Then user should see 'Steve Jobs' in image header
 
   @wip
-  Scenario: Search page title verification
+  Scenario Outline: Search page title verification
     Given user is on Wikipedia search page
     Then user types '<searchValue>' in the wikipedia search box and clicks enter
     Then user should see '<expectedTitle>' in wiki title
     Then user should see '<expectedMainHeader>' in main header
+
+    Examples: search values we are going to be using in this scenarios is as below
+      | searchValue       | expectedTitle     | expectedMainHeader |
+      | Steve Jobs        | Bill Gates        | Steve Jobs         |
+      | Cristiano Ronaldo | Cristiano Ronaldo | Bob Marley         |
+      | Antony Hopkins    | Antony Hopkins    | Antony Hopkins     |
+      | Lady Gaga         | Lady Gaga         | Lady Gaga          |
+      | Kate Winslet      | Kate Winslet      | Kate Winslet       |
