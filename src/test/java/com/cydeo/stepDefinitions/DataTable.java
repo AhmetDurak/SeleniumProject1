@@ -1,12 +1,15 @@
 package com.cydeo.stepDefinitions;
 
 
-import com.cydeo.Utilities.Driver;
+import com.cydeo.Pages.DataTableDropDown;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +28,22 @@ public class DataTable {
     }
 
     @Then("User should see below info in month dropdown")
-    public void userShouldSeeBelowInfoInMonthDropdown(List<String> months) {
-        System.out.println(months);
+    public void userShouldSeeBelowInfoInMonthDropdown(List<String> monthsFromFeature) {
+        DataTableDropDown dropdown = new DataTableDropDown();
+
+        //List of all ACTUAL month <options> as a web element
+        Select select = new Select(dropdown.month);
+        List<WebElement> actualOptions = select.getOptions();
+
+        //List of all ACTUAL month <options> as a String
+        List<String> actualOptionsAsString = new ArrayList<>();
+
+        for (WebElement each: actualOptions){
+            actualOptionsAsString.add(each.getText());
+        }
+
+        // Assert will check the size of the lists first. If it is matching it will check content 1 by 1.
+        Assert.assertEquals(monthsFromFeature,actualOptionsAsString);
     }
 
 }
