@@ -18,11 +18,11 @@ Feature: Login scenario using maps/ alternative practice
 
     @maleScientists
     Examples: Famous male scientists
-      | Product    | Quantity | Customer name     | Street        | City      | State  | Zip   | Card type  | Card No          | Expiry Date | Expected name     |
-      | Familybea  | 2        | Albert Einstein   | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Albert Einstein   |
-      | MoneyCog   | 2        | Archimedes     | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Archimedes        |
-      | Screenable | 2        | Neil deGray Tyson | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Neil deGray Tyson |
-      | MoneyCog   | 1        | Erwin Schrödinger | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Erwin Schrödinger |
+      | Product    | Quantity | Customer name         | Street        | City      | State  | Zip   | Card type  | Card No          | Expiry Date | Expected name     |
+      | Familybea  | 2        | Albert Einstein       | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Albert Einstein   |
+      | MoneyCog   | 2        | Archimedes            | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Archimedes        |
+      | Screenable | 2        | Neil deGray Tyson     | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Neil deGray Tyson |
+      | MoneyCog   | 1        | jghkgrwin Schrödinger | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       | Erwin Schrödinger |
 
     @femaleScientists
     Examples: Famous female scientists
