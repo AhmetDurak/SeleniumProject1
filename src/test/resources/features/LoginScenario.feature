@@ -1,5 +1,6 @@
 Feature: Login scenario using maps/ alternative practice
 
+  @wip @LoginScenario
   Scenario: User should be able to login with credentials
     Given User is on the login page of Web table app
     When User enters below credentials
@@ -7,7 +8,7 @@ Feature: Login scenario using maps/ alternative practice
       | password | Tester |
     Then User should see url contains orders
 
-  @wip @LoginScenario
+
   #Day17_WebTable_Task2-1
   Scenario Template: User should make a new order
     Given user is already logged in to web table app

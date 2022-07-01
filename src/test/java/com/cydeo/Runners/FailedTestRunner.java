@@ -9,7 +9,8 @@ import org.junit.runner.RunWith;
         features = "@target/rerun.txt",
         glue = "com/cydeo/stepDefinitions"
 )
-/**
+
+/*
  * It runs only failed test
  * This plugin allows us to keep track of the FAILED scenarios.
  * It is useful when we have multiple failed test and want them to run only
