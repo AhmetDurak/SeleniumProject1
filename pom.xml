@@ -68,6 +68,7 @@
 
     </dependencies>
     <!--This surefire plugin to run maven lifecycle commands-->
+    <!--To run parallel test, then click test on maven lifecycle-->
     <build>
         <plugins>
             <plugin>
