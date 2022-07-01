@@ -11,8 +11,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
-import java.util.concurrent.TimeUnit;
-
 
 public class Driver {
 
@@ -27,8 +25,7 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    //driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
@@ -37,19 +34,16 @@ public class Driver {
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "firefox-headless":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
                 case "ie":
                     if (!System.getProperty("os.name").toLowerCase().contains("windows"))
                         throw new WebDriverException("Your OS doesn't support Internet Explorer");
                     WebDriverManager.iedriver().setup();
                     driver = new InternetExplorerDriver();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
 
                 case "edge":
@@ -57,7 +51,6 @@ public class Driver {
                         throw new WebDriverException("Your OS doesn't support Edge");
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                     break;
 
                 case "safari":
@@ -74,42 +67,8 @@ public class Driver {
 
     public static void closeDriver() {
         if (driver != null) {
-            driver.quit();
-            driver = null;
+            driver.quit();  // It kills the session(driver_id: 13241325346356)
+            driver = null; // So next session can start(generate a new driver_id)
         }
     }
-}
-
-class myDriver{
-    /*
-    * Creating a private constructor, so we are closing
-    * access to the object of this class from outside the class
-    */
-    private myDriver(){}
-
-    /*
-    * We make Webdriver private, because we want to close access from outside the class.
-    * We make it static because we use it in a static method*/
-    private static WebDriver driver;
-
-    // Create a re-usable utility method which will return same driver instance when we call it
-    public static WebDriver get(){
-        if (driver == null){
-            String browser = ConfigurationReader.get("url");
-            // Depending on the browserType that will be return from configuration.properties file
-            // switch statement will determine the case, and open the matching browser
-            switch (browser){
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-                case "firefox":
-
-                    break;
-            }
-
-        }
-        return driver;
-    }
-
 }

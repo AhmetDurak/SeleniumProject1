@@ -3,6 +3,7 @@ package com.cydeo.Pages;
 import com.cydeo.Utilities.ConfigurationReader;
 import com.cydeo.Utilities.Driver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,6 +11,7 @@ public class LoginScenario {
     public LoginScenario() {
         PageFactory.initElements(Driver.get(), this);
     }
+    Actions actions = new Actions(Driver.get());
 
     @FindBy(css = "input[name='username']")
     public WebElement username;
@@ -47,10 +49,10 @@ public class LoginScenario {
     @FindBy(xpath = "(//input[@name='card'])[1]")
     public WebElement visa;
 
-    @FindBy(xpath = "(//input[@name='card'])[1]")
+    @FindBy(xpath = "(//input[@name='card'])[2]")
     public WebElement masterCard;
 
-    @FindBy(xpath = "(//input[@name='card'])[1]")
+    @FindBy(xpath = "(//input[@name='card'])[3]")
     public WebElement americanExpress;
 
     @FindBy(css = "button[type='submit']")
@@ -69,15 +71,16 @@ public class LoginScenario {
      * @param cardType
      */
     public void selectCardType(String cardType){
+
         switch (cardType){
-            case "visa":
-                this.visa.click();
+            case "Visa":
+                actions.click(this.visa).perform();
                 break;
-            case "masterCard":
-                this.masterCard.click();
+            case "MasterCard":
+                actions.click(this.masterCard).perform();
                 break;
-            case "americanExpress":
-                this.americanExpress.click();
+            case "American Express":
+                actions.click(this.americanExpress).perform();
                 break;
             default:
                 System.out.println("Card type doesn't exist!");

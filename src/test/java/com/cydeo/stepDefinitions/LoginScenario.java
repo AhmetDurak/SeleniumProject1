@@ -61,12 +61,11 @@ public class LoginScenario {
     }
     @Then("user clicks to Process Order")
     public void user_clicks_to_process_order() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        login = new com.cydeo.Pages.LoginScenario();
+        login.submit.click();
     }
     @Then("user should see new order in the table on View all orders page")
     public void user_should_see_new_order_in_the_table_on_view_all_orders_page() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 }
