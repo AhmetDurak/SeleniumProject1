@@ -185,7 +185,7 @@ public class BrowserUtilities {
      */
     public static void verifyElementDisplayed(By by) {
         try {
-            Assert.assertTrue(Driver.get().findElement(by).isDisplayed(), "Element not visible: " + by);
+            Assert.assertTrue("Element not visible: " + by,Driver.get().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + by);
@@ -201,7 +201,7 @@ public class BrowserUtilities {
      */
     public static void verifyElementNotDisplayed(By by) {
         try {
-            Assert.assertFalse(Driver.get().findElement(by).isDisplayed(), "Element should not be visible: " + by);
+            Assert.assertFalse("Element should not be visible: " + by,Driver.get().findElement(by).isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
 
@@ -217,7 +217,7 @@ public class BrowserUtilities {
      */
     public static void verifyElementDisplayed(WebElement element) {
         try {
-            Assert.assertTrue(element.isDisplayed(), "Element not visible: " + element);
+            Assert.assertTrue("Element not visible: " + element,element.isDisplayed() );
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + element);

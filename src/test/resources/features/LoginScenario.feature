@@ -7,16 +7,27 @@ Feature: Login scenario using maps/ alternative practice
       | password | Tester |
     Then User should see url contains orders
 
-
   @wip @LoginScenario
   #Day17_WebTable_Task2-1
-  Scenario Outline: User should make a new order
+  Scenario Template: User should make a new order
     Given user is already logged in to web table app
     When user is on the “Order” page
     Then user enters appropriate test data: '<Product>','<Quantity>','<Customer name>','<Street>','<City>','<State>','<Zip>','<Card type>','<Card No>','<Expiry Date>'
     And user clicks to Process Order
-    Then user should see new order in the table on View all orders page
+    Then user should see new order in the table on View all orders page '<Customer name>'
 
-    Examples: User enters product, address and payment information
-      | Product   | Quantity | Customer name | Street        | City      | State  | Zip   | Card type  | Card No          | Expiry Date |
-      | Familybea | 2        | Tom Jerry     | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+    @maleScientists
+    Examples: Famous male scientists
+      | Product    | Quantity | Customer name     | Street        | City      | State  | Zip   | Card type  | Card No          | Expiry Date |
+      | Familybea  | 2        | Albert Einstein   | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | MoneyCog   | 2        | Archimedes        | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | Screenable | 2        | Neil deGray Tyson | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | MoneyCog   | 1        | Erwin Schrödinger | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+
+    @femaleScientists
+    Examples: Famous female scientists
+      | Product    | Quantity | Customer name        | Street        | City      | State  | Zip   | Card type  | Card No          | Expiry Date |
+      | Familybea  | 2        | Marie Curie          | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | MoneyCog   | 2        | Rosalind Franklin    | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | Screenable | 2        | Gertrude Belle Elion | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |
+      | MoneyCog   | 1        | Lise Meitner         | Nicola street | Frankfurt | Hessen | 87091 | MasterCard | 5400725012345678 | 04/24       |

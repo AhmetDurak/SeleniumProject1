@@ -1,17 +1,18 @@
 package com.cydeo.stepDefinitions;
 
+import com.cydeo.Utilities.ConfigurationReader;
 import com.cydeo.Utilities.Driver;
+import com.cydeo.Pages.LoginScenarioPages;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class LoginScenario {
-    com.cydeo.Pages.LoginScenario login;
+    LoginScenarioPages login;
 
     @Given("User is on the login page of Web table app")
     public void user_is_on_the_login_page_of_web_table_app() {
@@ -20,7 +21,7 @@ public class LoginScenario {
     }
     @When("User enters below credentials")
     public void user_enters_below_credentials(Map<String,String> credentials) {
-        login = new com.cydeo.Pages.LoginScenario();
+        login = new LoginScenarioPages();
         login.username.sendKeys(credentials.get("username"));
         login.password.sendKeys(credentials.get("password"));
         login.login.click();
@@ -35,18 +36,19 @@ public class LoginScenario {
     //Second Scenario
     @Given("user is already logged in to web table app")
     public void user_is_already_logged_in_to_web_table_app() {
-        login = new com.cydeo.Pages.LoginScenario();
+        Driver.get().get(ConfigurationReader.get("LoginScenario"));
+        login = new LoginScenarioPages();
 
         login.loginWithConfig();
     }
     @When("user is on the “Order” page")
     public void user_is_on_the_order_page() {
-        login = new com.cydeo.Pages.LoginScenario();
+        login = new LoginScenarioPages();
         login.orderPage.click();
     }
     @Then("user enters appropriate test data: {string},{string},{string},{string},{string},{string},{string},{string},{string},{string}")
     public void user_enters_appropriate_test_data(String product, String quantity, String customerName, String street, String city, String state, String zip, String cardType, String cardNo, String expiryDate) {
-        login = new com.cydeo.Pages.LoginScenario();
+        login = new LoginScenarioPages();
         Select select = new Select(login.product);
         select.selectByVisibleText(product);
         login.quantity.sendKeys(quantity);
@@ -61,11 +63,13 @@ public class LoginScenario {
     }
     @Then("user clicks to Process Order")
     public void user_clicks_to_process_order() {
-        login = new com.cydeo.Pages.LoginScenario();
+        login = new LoginScenarioPages();
         login.submit.click();
     }
-    @Then("user should see new order in the table on View all orders page")
-    public void user_should_see_new_order_in_the_table_on_view_all_orders_page() {
-
+    @Then("user should see new order in the table on View all orders page {string}")
+    public void user_should_see_new_order_in_the_table_on_view_all_orders_page(String customerName) {
+        login = new LoginScenarioPages();
+        login.viewAllOrders.click();
+        Assert.assertTrue(login.isNameOnList(customerName));
     }
 }

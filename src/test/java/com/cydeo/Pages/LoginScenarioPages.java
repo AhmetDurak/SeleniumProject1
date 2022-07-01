@@ -2,13 +2,16 @@ package com.cydeo.Pages;
 
 import com.cydeo.Utilities.ConfigurationReader;
 import com.cydeo.Utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginScenario {
-    public LoginScenario() {
+import java.util.NoSuchElementException;
+
+public class LoginScenarioPages {
+    public LoginScenarioPages() {
         PageFactory.initElements(Driver.get(), this);
     }
     Actions actions = new Actions(Driver.get());
@@ -64,6 +67,27 @@ public class LoginScenario {
     @FindBy(name = "cardExp")
     public WebElement expiryDate;
 
+    @FindBy(css = "button.button.nav__item.active")
+    public WebElement viewAllOrders;
+
+    @FindBy()
+    public WebElement getNameUpdatedList;
+
+
+    /**
+     * This method looks for the given name on the list and return true if it exists
+     * This method accepts one parameter
+     * @param nameOnList
+     */
+    public boolean isNameOnList(String nameOnList){
+        String path = "//tbody/tr/td[.='"+ nameOnList+"']";
+        try {
+            getNameUpdatedList = Driver.get().findElement(By.xpath(path));
+        }catch (NoSuchElementException ignored){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * One parameter
@@ -86,7 +110,6 @@ public class LoginScenario {
                 System.out.println("Card type doesn't exist!");
         }
     }
-
 
     /**
      * No parameters.

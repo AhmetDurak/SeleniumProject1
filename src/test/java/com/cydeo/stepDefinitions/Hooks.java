@@ -57,7 +57,7 @@ public class Hooks {
         Driver.get().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @After (value = "@wikipedia")
+    @After
     public void tearDown(Scenario scenario){
 
         if (scenario.isFailed()){
